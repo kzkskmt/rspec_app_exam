@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :task do
-    title { 'Task_01' }
-    # title { 'Task' }
+    sequence(:title, "title_1")
     status { rand(2) }
     from = Date.parse("2019/08/01")
     to   = Date.parse("2019/12/31")
