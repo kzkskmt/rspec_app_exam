@@ -9,7 +9,6 @@ FactoryBot.define do
     association :project
 
     trait :due_yesterday do
-      project_id { project.id }
       status { :done }
       completion_date { Time.current.yesterday }
     end
