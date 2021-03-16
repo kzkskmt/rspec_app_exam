@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Task', type: :system do
-  let(:project) { FactoryBot.create(:project) }
-  let(:task) { FactoryBot.create(:task) }
+  let(:project) { create(:project) }
+  let(:task) { create(:task) }
 
   describe 'Task一覧' do
-    let!(:task) { FactoryBot.create(:task) }
+    let!(:task) { create(:task) }
 
     context '正常系' do
       it '一覧ページにアクセスした場合、Taskが表示されること' do
@@ -79,8 +79,8 @@ RSpec.describe 'Task', type: :system do
       end
 
       it '既にステータスが完了のタスクのステータスを変更した場合、Taskの完了日が更新されないこと' do
-        # TODO: FactoryBotのtraitを利用してください
-        task = FactoryBot.create(:task, :due_yesterday)
+        # TODO: のtraitを利用してください
+        task = create(:task, :due_yesterday)
         visit edit_project_task_path(project, task)
         select 'todo', from: 'Status'
         click_button 'Update Task'
@@ -92,7 +92,7 @@ RSpec.describe 'Task', type: :system do
   end
 
   describe 'Task削除' do
-    let!(:task) { FactoryBot.create(:task) }
+    let!(:task) { create(:task) }
 
     context '正常系' do
       # FIXME: テストが失敗するので修正してください
